@@ -29,7 +29,7 @@ namespace Physical_Game
         private const string ScoreStat = "Score last round: ";
         private const string GamesCrashed = "Games that were started but stopped abruptly: ";
         private const string Splitter = "=========================";
-        private const string LogFilePath = "logfile.txt";
+        private const string scoreFilePath = "scoreFile.txt";
         private const string EnterScoresMessage = "Enter the number of scores to display:";
         private const string InvalidNumberMessage = "Invalid input. Please enter a valid number.";
         #endregion
@@ -46,13 +46,13 @@ namespace Physical_Game
                     if (failType == FAIL_BUTTON)
                     {
                         Debug.WriteLine(FailButtonString);
-                        File.AppendAllText(LogFilePath, $"Score: {score}\n");
+                        File.AppendAllText(scoreFilePath, $"Score: {score}\n");
                         score = 0;
                     }
                     else if (failType == FAIL_TIME)
                     {
                         Debug.WriteLine(FailTimeString);
-                        File.AppendAllText(LogFilePath, $"Score: {score}\n");
+                        File.AppendAllText(scoreFilePath, $"Score: {score}\n");
                         score = 0;
                     }
                     Thread.Sleep(10);
@@ -78,7 +78,7 @@ namespace Physical_Game
 
         public static void DisplayScores(int numberOfScores)
         {
-            string[] lines = File.ReadAllLines(LogFilePath);
+            string[] lines = File.ReadAllLines(scoreFilePath);
             int startIndex = Math.Max(0, lines.Length - numberOfScores);
             int endIndex = lines.Length - 1;
 
