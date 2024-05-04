@@ -17,6 +17,7 @@ namespace Physical_Game
         int currentTimeLimit = 3000;
         long timeOfLightUp;
         long timeActual;
+        int gamesStarted = 0;
 
         #endregion
 
@@ -35,6 +36,7 @@ namespace Physical_Game
             hardware.FlashLed(HardwareInteraction.CENTER_LED, 3, 500, hardware);
             stopWatch = new();
             RunGame();
+            gamesStarted++;
         }
         void RunGame()
         {
